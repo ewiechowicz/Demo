@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mój kalkulator</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+<script type="text/babel">
+/* JS START */
+
+var NumbersList = React.createClass ({
+  getInitialState: function() {
+    return {
+      number: '',
+      listItem: '',
+      count: 5,
+      numbers: [1, 2],
+    }
+  },
+  onNumberChange: function(event) {
+    this.setState({
+      number:event.target.value
+    })
+  },
+  onListChange: function(event) {
+    this.setState({
+      listItem:event.target.value
+    })
+  },
+  onButtonClick: function() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  },
+  render: function() {
+    var xListItems = [];
+
+    for (var i = 0; i < this.state.count; ++i) {
+      xListItems.push(
+        <li>{i + 1} : {this.state.listItem}</li>
+      );
+    }
+
+    return <div>
+    <b>Lista liczb:</b>
+    <br />
+    <input
+    type="text"
+    value={this.state.listItem}
+    onChange={this.onListChange}
+    />
+    <button onClick={this.onButtonClick}>
+      Dodaj
+    </button>
+    <ul>
+      {xListItems}
+    </ul>
+    </div>
+  }
+})
+
+
+ReactDOM.render(
+  <NumbersList />,
+  document.getElementById('app')
+);
