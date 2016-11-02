@@ -18,8 +18,8 @@ var NumbersList = React.createClass ({
     return {
       number: '',
       listItem: '',
-      count: 5,
-      numbers: [1, 2],
+      count: 0,
+      numbers: [],
     }
   },
   onNumberChange: function(event) {
@@ -34,7 +34,9 @@ var NumbersList = React.createClass ({
   },
   onButtonClick: function() {
     this.setState({
-      count: this.state.count + 1,
+      count:this.state.count + 1,
+      numbers:this.state.numbers.concat(this.state.listItem),
+
     });
   },
   render: function() {
@@ -42,7 +44,7 @@ var NumbersList = React.createClass ({
 
     for (var i = 0; i < this.state.count; ++i) {
       xListItems.push(
-        <li>{i + 1} : {this.state.listItem}</li>
+        <li>{this.state.numbers[i]}</li>
       );
     }
 
@@ -55,11 +57,12 @@ var NumbersList = React.createClass ({
     onChange={this.onListChange}
     />
     <button onClick={this.onButtonClick}>
-      Dodaj
+      Add
     </button>
     <ul>
       {xListItems}
     </ul>
+    <hr />{JSON.stringify(this.state)}
     </div>
   }
 })
