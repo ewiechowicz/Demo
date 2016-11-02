@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Demo</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+<script type="text/babel">
+/* JS START */
+
+var projects = [{
+  name: 'Calculator',
+  path: 'calculator.html',
+}, {
+  name: 'Numbers list',
+  path: 'numbersList.html',
+}];
+
+var Demo = React.createClass({
+  renderProjects: function() {
+    return (
+      <ul>
+        {projects.map((project, i) => <li key={i}>
+          <a href={`/Demo/${project.path}`}>
+            {project.name}
+          </a>
+        </li>)}
+      </ul>
+    );
+  },
+
+  render: function() {
+    return (
+      <div>
+        <h1>My projects</h1>
+        {this.renderProjects()}
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <Demo />,
+  document.getElementById('app')
+);
+
+/* JS END */
+</script>
+
+  </body>
+</html>
