@@ -26,8 +26,9 @@ var Demo = React.createClass({
     return (
       <ul>
         {projects.map((project, i) => <li key={i}>
-          <a href={`/Demo/${project.path}`}>
+          <a href={`./${project.path}`} target="_blank">
             {project.name}
+
           </a>
         </li>)}
       </ul>

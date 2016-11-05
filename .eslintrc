@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "react/prefer-es6-class": [1, "always"]
+  },
+  "globals": {
+      "document": false,
+      "React": false,
+      "ReactDOM": false
+  }
+}

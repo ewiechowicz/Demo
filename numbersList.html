@@ -9,66 +9,6 @@
   </head>
   <body>
     <div id="app"></div>
-
-<script type="text/babel">
-/* JS START */
-
-var NumbersList = React.createClass ({
-  getInitialState: function() {
-    return {
-      number: '',
-      listItem: '',
-      count: 0,
-      numbers: [],
-    }
-  },
-  onNumberChange: function(event) {
-    this.setState({
-      number:event.target.value
-    })
-  },
-  onListChange: function(event) {
-    this.setState({
-      listItem:event.target.value
-    })
-  },
-  onButtonClick: function() {
-    this.setState({
-      count:this.state.count + 1,
-      numbers:this.state.numbers.concat(this.state.listItem),
-
-    });
-  },
-  render: function() {
-    var xListItems = [];
-
-    for (var i = 0; i < this.state.count; ++i) {
-      xListItems.push(
-        <li>{this.state.numbers[i]}</li>
-      );
-    }
-
-    return <div>
-    <b>Lista liczb:</b>
-    <br />
-    <input
-    type="text"
-    value={this.state.listItem}
-    onChange={this.onListChange}
-    />
-    <button onClick={this.onButtonClick}>
-      Add
-    </button>
-    <ul>
-      {xListItems}
-    </ul>
-    <hr />{JSON.stringify(this.state)}
-    </div>
-  }
-})
-
-
-ReactDOM.render(
-  <NumbersList />,
-  document.getElementById('app')
-);
+    <script type="text/babel" src="./numbersList.jsx"></script>
+  </body>
+</html>
