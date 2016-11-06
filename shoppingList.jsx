@@ -12,7 +12,10 @@ const ShoppingList = React.createClass({
   },
   buttonOnClick() {
     const newItems = this.state.items.slice();
-    newItems.push(this.state.item);
+    newItems.push({
+      name: this.state.item,
+      done: false,
+    });
     this.setState({
       items: newItems,
       item: '',
@@ -20,10 +23,22 @@ const ShoppingList = React.createClass({
   },
   buttonOnClick2(e) {
     // this.state.items.splice(e, 1);
-    const newItems2 = this.state.items.slice();
-    newItems2[e] = <s>{newItems2[e]}</s>;
+    const item = this.state.items[e];
+    const newItems = this.state.items.slice();
+
+    if (item.done === true) {
+      newItems[e] = {
+        name: item.name,
+        done: false,
+      };
+    } else {
+      newItems[e] = {
+        name: item.name,
+        done: true,
+      };
+    }
     this.setState({
-      items: newItems2,
+      items: newItems,
     });
   },
   enterOnClick(e) {
@@ -34,7 +49,15 @@ const ShoppingList = React.createClass({
   render() {
     const ar = [];
     for (let i = 0; i < this.state.items.length; i += 1) {
-      ar.push(<li key={i}>{this.state.items[i]}&nbsp;
+      const item = this.state.items[i];
+      let name = item.name;
+      if (item.done === true) {
+        name = <s>{item.name}</s>;
+      } else {
+        name = item.name;
+      }
+      ar.push(<li key={i}>
+        {name}&nbsp;
         <button
           onClick={() => {
             this.buttonOnClick2(i);
