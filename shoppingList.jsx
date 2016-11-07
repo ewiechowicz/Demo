@@ -27,15 +27,29 @@ const ShoppingList = React.createClass({
     const item = this.state.items[e];
     const newItems = this.state.items.slice();
 
-    if (item.done === true) {
+    if (item.bold === true && item.done === true) {
       newItems[e] = {
         name: item.name,
         done: false,
+        bold: true,
       };
-    } else {
+    } else if (item.bold === true && item.done === false) {
       newItems[e] = {
         name: item.name,
         done: true,
+        bold: true,
+      };
+    } else if (item.bold === false && item.done === true) {
+      newItems[e] = {
+        name: item.name,
+        done: false,
+        bold: false,
+      };
+    } else if (item.bold === false && item.done === false) {
+      newItems[e] = {
+        name: item.name,
+        done: true,
+        bold: false,
       };
     }
     this.setState({
@@ -46,8 +60,8 @@ const ShoppingList = React.createClass({
     const newItems = this.state.items.slice();
     newItems.push({
       name: this.state.item,
-      done: false,
       bold: true,
+      done: false,
     });
     this.setState({
       items: newItems,
@@ -63,16 +77,14 @@ const ShoppingList = React.createClass({
     const ar = [];
     for (let i = 0; i < this.state.items.length; i += 1) {
       const item = this.state.items[i];
-      // const it = this.state.items;
       let name = item.name;
-      if (item.done === true) {
-        name = <s>{item.name}</s>;
-      } else {
-        name = item.name;
-      }
-      if (item.bold === true) {
+      if (item.bold === true && item.done === true) {
+        name = <s><b>{item.name}</b></s>;
+      } else if (item.bold === true && item.done === false) {
         name = <b>{item.name}</b>;
-      } else {
+      } else if (item.bold === false && item.done === true) {
+        name = <s>{item.name}</s>;
+      } else if (item.bold === false && item.done === false) {
         name = item.name;
       }
       ar.push(<li key={i}>
