@@ -6,9 +6,16 @@
     <script src="build/react.js"></script>
     <script src="build/react-dom.js"></script>
     <script src="build/browser.min.js"></script>
+    <script>
+    function save() {
+      var storageValue = document.getElementById('example').value;
+      localStorage.setItem('text', storageValue);
+    }
+    </script>
   </head>
   <body>
     <div id="example"></div>
     <script type="text/babel" src="./shoppingList.jsx" />
+
   </body>
   </html>
