@@ -15,6 +15,7 @@ const ShoppingList = React.createClass({
     newItems.push({
       name: this.state.item,
       done: false,
+      bold: false,
     });
     this.setState({
       items: newItems,
@@ -41,6 +42,18 @@ const ShoppingList = React.createClass({
       items: newItems,
     });
   },
+  buttonOnClick3() {
+    const newItems = this.state.items.slice();
+    newItems.push({
+      name: this.state.item,
+      done: false,
+      bold: true,
+    });
+    this.setState({
+      items: newItems,
+      item: '',
+    });
+  },
   enterOnClick(e) {
     if (e.keyCode === 13) {
       this.buttonOnClick();
@@ -50,9 +63,15 @@ const ShoppingList = React.createClass({
     const ar = [];
     for (let i = 0; i < this.state.items.length; i += 1) {
       const item = this.state.items[i];
+      // const it = this.state.items;
       let name = item.name;
       if (item.done === true) {
         name = <s>{item.name}</s>;
+      } else {
+        name = item.name;
+      }
+      if (item.bold === true) {
+        name = <b>{item.name}</b>;
       } else {
         name = item.name;
       }
@@ -77,6 +96,9 @@ const ShoppingList = React.createClass({
         />
         <button onClick={this.buttonOnClick}>
         Add
+        </button>
+        <button onClick={this.buttonOnClick3}>
+          Add priority
         </button>
         <ul>
           {ar}
