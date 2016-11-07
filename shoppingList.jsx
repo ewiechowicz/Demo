@@ -93,7 +93,9 @@ const ShoppingList = React.createClass({
           onClick={() => {
             this.buttonOnClick2(i);
           }}
-        />
+        >
+        Delete
+        </button>
       </li>);
     }
     return (
