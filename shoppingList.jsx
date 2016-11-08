@@ -5,6 +5,11 @@ const ShoppingList = React.createClass({
       items: [],
     };
   },
+  componentWillMount() {
+    this.setState({
+      items: JSON.parse(localStorage.getItem('newItems')),
+    });
+  },
   itemOnChange(e) {
     this.setState({
       item: e.target.value,
@@ -17,6 +22,8 @@ const ShoppingList = React.createClass({
       done: false,
       bold: false,
     });
+    /* global localStorage:false*/
+    localStorage.setItem('newItems', JSON.stringify(newItems));
     this.setState({
       items: newItems,
       item: '',
@@ -52,6 +59,7 @@ const ShoppingList = React.createClass({
         bold: false,
       };
     }
+    localStorage.setItem('newItems', JSON.stringify(newItems));
     this.setState({
       items: newItems,
     });
@@ -63,6 +71,7 @@ const ShoppingList = React.createClass({
       bold: true,
       done: false,
     });
+    localStorage.setItem('newItems', JSON.stringify(newItems));
     this.setState({
       items: newItems,
       item: '',
@@ -117,6 +126,10 @@ const ShoppingList = React.createClass({
         <ul>
           {ar}
         </ul>
+        <br /> <br />
+        <button onClick={this.save}>
+          Save
+        </button>
       </div>
     );
   },

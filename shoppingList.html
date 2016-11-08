@@ -8,8 +8,7 @@
     <script src="build/browser.min.js"></script>
     <script>
     function save() {
-      var storageValue = document.getElementById('example').value;
-      localStorage.setItem('text', storageValue);
+      localStorage.setItem('text/babel', document.getElementById('example').value);
     }
     </script>
   </head>
