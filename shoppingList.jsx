@@ -6,7 +6,8 @@ const ShoppingList = React.createClass({
     };
   },
   componentWillMount() {
-    if (JSON.parse(localStorage.getItem('newItems')) !== null) {
+    if (JSON.parse(localStorage.getItem('newItems')) !== null ||
+    JSON.parse(localStorage.getItem('newItems')) !== undefined) {
       this.setState({
         items: JSON.parse(localStorage.getItem('newItems')),
       });
@@ -128,10 +129,6 @@ const ShoppingList = React.createClass({
         <ul>
           {ar}
         </ul>
-        <br /> <br />
-        <button onClick={this.save}>
-          Save
-        </button>
       </div>
     );
   },
