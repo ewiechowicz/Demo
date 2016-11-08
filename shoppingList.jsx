@@ -7,7 +7,7 @@ const ShoppingList = React.createClass({
   },
   componentWillMount() {
     this.setState({
-      items: JSON.parse(localStorage.getItem('newItems') || []),
+      items: JSON.parse(localStorage.getItem('newItems')),
     });
   },
   itemOnChange(e) {
