@@ -107,28 +107,31 @@ const ShoppingList = React.createClass({
       } else {
         name = item.name;
       }
-      ar.push(<li key={i}>
-        {name}&nbsp;
-        &nbsp;
-        <div className={`ui checkbox ${item.done ? 'checked' : ''}`}>
-          <input
-            type="checkbox"
-            checked={item.done}
-            onChange={() => {
-              this.buttonOnClick2(i);
+      ar.push(<div className="item" key={i}>
+        <div className="right floated content">
+          <div className={`ui checkbox ${item.done ? 'checked' : ''}`}>
+            <input
+              type="checkbox"
+              checked={item.done}
+              onChange={() => {
+                this.buttonOnClick2(i);
+              }}
+            />
+            <label />
+          </div>
+          <button
+            className="ui icon mini button"
+            onClick={() => {
+              this.buttonOnClick4(i);
             }}
-          />
-          <label />
+          >
+            <i className="trash icon" />
+          </button>
         </div>
-        <button
-          className="ui icon mini button"
-          onClick={() => {
-            this.buttonOnClick4(i);
-          }}
-        >
-          <i className="trash icon" />
-        </button>
-      </li>);
+        <div className="content">
+          {name}
+        </div>
+      </div>);
     }
     return (
       <div className="ui middle aligned center aligned grid">
@@ -170,17 +173,18 @@ const ShoppingList = React.createClass({
               marginTop: 6,
             }}
           >
-           Add
+            Add
           </button>
           <button
             className="tiny ui button"
             onClick={this.buttonOnClick3}
           >
-          Add priority
+            Add priority
           </button>
-          <ul>
+
+          <div className="ui middle aligned divided list">
             {ar}
-          </ul>
+          </div>
         </div>
       </div>
     );
