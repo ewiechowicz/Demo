@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+
 const ShoppingList = React.createClass({
   getInitialState() {
     return {
@@ -84,50 +86,102 @@ const ShoppingList = React.createClass({
       this.buttonOnClick();
     }
   },
+  buttonOnClick4(e) {
+    // const item = this.state.items[e];
+    const newItems = this.state.items.slice();
+    newItems.splice(e, 1);
+    localStorage.setItem('newItems', JSON.stringify(newItems));
+    this.setState({
+      items: newItems,
+    });
+  },
   render() {
     const ar = [];
     for (let i = 0; i < this.state.items.length; i += 1) {
       const item = this.state.items[i];
       let name = item.name;
       if (item.bold === true && item.done === true) {
-        name = <s><b>{item.name}</b></s>;
+        name = <b>{item.name}</b>;
       } else if (item.bold === true && item.done === false) {
         name = <b>{item.name}</b>;
-      } else if (item.bold === false && item.done === true) {
-        name = <s>{item.name}</s>;
-      } else if (item.bold === false && item.done === false) {
+      } else {
         name = item.name;
       }
       ar.push(<li key={i}>
         {name}&nbsp;
+        &nbsp;
+        <div className={`ui checkbox ${item.done ? 'checked' : ''}`}>
+          <input
+            type="checkbox"
+            checked={item.done}
+            onChange={() => {
+              this.buttonOnClick2(i);
+            }}
+          />
+          <label />
+        </div>
         <button
+          className="ui icon mini button"
           onClick={() => {
-            this.buttonOnClick2(i);
+            this.buttonOnClick4(i);
           }}
         >
-        Delete
+          <i className="trash icon" />
         </button>
       </li>);
     }
     return (
-      <div>
-        <b>Shopping List</b>
-        <br />
-        <input
-          type="text"
-          value={this.state.item}
-          onChange={this.itemOnChange}
-          onKeyDown={this.enterOnClick}
-        />
-        <button onClick={this.buttonOnClick}>
-        Add
-        </button>
-        <button onClick={this.buttonOnClick3}>
+      <div className="ui middle aligned center aligned grid">
+        <div
+          className="ten wide column centered grid"
+          style={{
+            backgroundColor: 'white',
+            borderColor: 'grey',
+            borderWidth: 1,
+            borderStyle: 'inset',
+            marginTop: 200,
+            maxWidth: 450,
+            borderRadius: 10,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: 'Lato',
+              fontWeight: 'bold',
+              fontSize: 20,
+            }}
+          >
+            Shopping List
+          </div>
+          <br />
+          <input
+            className="ui large input"
+            type="text"
+            placeholder="Milk, flour, eggs, etc..."
+            value={this.state.item}
+            onChange={this.itemOnChange}
+            onKeyDown={this.enterOnClick}
+          />
+          <br />
+          <button
+            className="tiny ui secondary button"
+            onClick={this.buttonOnClick}
+            style={{
+              marginTop: 6,
+            }}
+          >
+           Add
+          </button>
+          <button
+            className="tiny ui button"
+            onClick={this.buttonOnClick3}
+          >
           Add priority
-        </button>
-        <ul>
-          {ar}
-        </ul>
+          </button>
+          <ul>
+            {ar}
+          </ul>
+        </div>
       </div>
     );
   },

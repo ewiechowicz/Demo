@@ -6,15 +6,18 @@
     <script src="build/react.js"></script>
     <script src="build/react-dom.js"></script>
     <script src="build/browser.min.js"></script>
-    <script>
-    function save() {
-      localStorage.setItem('text/babel', document.getElementById('example').value);
-    }
-    </script>
+    <script src="build/jquery-3.1.1.min.js"></script>    
+    <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+    <script src="semantic/semantic.min.js"></script>
+    <style>
+      body {
+        background-image: url("./backgroundImage.png");
+        background-size: 300px 300px;
+      }
+    </style>
   </head>
   <body>
     <div id="example"></div>
-    <script type="text/babel" src="./shoppingList.jsx" />
-
+    <script type="text/babel" src="./shoppingList.jsx"></script>
   </body>
   </html>
