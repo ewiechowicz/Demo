@@ -58,49 +58,57 @@ const Calculator = React.createClass({
 
     return (
       <div
-        className="ui two column centered grid"
+        className="ui one column centered grid"
         style={{
           marginTop: 200,
         }}
       >
-        <div className="column">
-          <div className="ui large action input">
-            <input
-              type="text"
-              placeholder="Add number..."
-              onChange={this.onFirstNumberChange}
-              value={this.state.number}
-            />
-            &nbsp;
-            <select
-              className="ui massive compact selection dropdown"
-              value={this.state.operator}
-              onChange={this.onSelectChange}
-            >
-              <option value="+">Dodawanie</option>
-              <option value="-">Odejmowanie</option>
-              <option value="*">Mnożenie</option>
-              <option value="/">Dzielenie</option>
-            </select>
-            &nbsp;
-            <input
-              type="text"
-              placeholder="Add number..."
-              onChange={this.onSecondNumberChange}
-              value={this.state.number2}
-            />
-            <button className="ui blue button">{result}</button>
+        <div className="row">
+          <div className="column aligned">
+            <div className="ui action input">
+              <input
+                type="text"
+                placeholder="Add number..."
+                onChange={this.onFirstNumberChange}
+                value={this.state.number}
+              />
+              &nbsp;
+              <select
+                className="ui massive compact selection dropdown"
+                value={this.state.operator}
+                onChange={this.onSelectChange}
+              >
+                <option value="+">Dodawanie</option>
+                <option value="-">Odejmowanie</option>
+                <option value="*">Mnożenie</option>
+                <option value="/">Dzielenie</option>
+              </select>
+              &nbsp;
+              <input
+                type="text"
+                placeholder="Add number..."
+                onChange={this.onSecondNumberChange}
+                value={this.state.number2}
+              />
+              <button className="ui blue button">{result}</button>
+            </div>
           </div>
           <br />
           <br />
           <br />
           <br />
-          <img
-            alt="calculator"
-            src="./calculator.png"
-            heigh="50%"
-            width="50%"
-          />
+          <br />
+          <div className="row">
+            <div className="column">
+              <img
+                alt="calculator"
+                src="./calculator.png"
+                heigh="20%"
+                width="20%"
+                marginTop="200"
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
