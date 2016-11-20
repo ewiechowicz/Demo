@@ -1,9 +1,12 @@
 {
   "extends": "airbnb",
   "rules": {
+    "react/sort-comp": 0,
+    "react/no-string-refs": 0,
     "react/prefer-es6-class": [1, "always"]
   },
   "globals": {
+      "$": false,
       "document": false,
       "React": false,
       "ReactDOM": false

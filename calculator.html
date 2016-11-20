@@ -6,116 +6,20 @@
     <script src="build/react.js"></script>
     <script src="build/react-dom.js"></script>
     <script src="build/browser.min.js"></script>
+    <script src="build/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet"
+      type="text/css"
+      href="semantic/semantic.min.css"
+    >
+    <script src="semantic/semantic.min.js"></script>
+    <style>
+      body {
+        background-image: url("./graphy.png");
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
-
-<script type="text/babel">
-/* JS START */
-
-var Calculator = React.createClass({
-  getInitialState: function () {
-    return {
-      operator: '+',
-      number: '',
-      number2: ''
-    };
-  },
-
-  onSelectChange: function (event) {
-    console.log('select change', event.target.value);
-
-    this.setState({
-      operator: event.target.value,
-    });
-  },
-  onFirstNumberChange: function (event) {
-    this.setState({
-      number: Number(event.target.value),
-    });
-  },
-  onSecondNumberChange: function (event) {
-    this.setState({
-      number2: Number(event.target.value),
-    });
-  },
-
-  render: function() {
-    console.log('render', this.state);
-
-    var result;
-    switch (this.state.operator) {
-      case '+':
-        result = this.state.number + this.state.number2;
-        break;
-
-      case '-':
-        result = this.state.number - this.state.number2;
-        break;
-
-      case '*':
-        result = this.state.number * this.state.number2;
-        break;
-
-      case '/':
-        result = this.state.number / this.state.number2;
-        break;
-
-      default:
-    }
-
-    var xResult;
-    if (result || result === 0) {
-      xResult = <b>
-        {this.state.number}
-        {this.state.operator}
-        {this.state.number2} = {result}
-      </b>;
-    }
-
-    return <div>
-      <b>Wybierz działanie</b>
-      <br />
-      <select
-        onChange={this.onSelectChange}
-        value={this.state.operator}
-      >
-        <option value="+">Dodawanie</option>
-        <option value="-">Odejmowanie</option>
-        <option value="*">Mnożenie</option>
-        <option value="/">Dzielenie</option>
-      </select>
-      <br />
-      <br />
-      <b>Wpisz dwie liczby</b>
-      <br />
-      <input
-        type="text"
-        onChange={this.onFirstNumberChange}
-        value={this.state.number}
-      >
-      </input>
-      {' '}
-      <input
-        type="text"
-        onChange={this.onSecondNumberChange}
-        value={this.state.number2}
-      >
-      </input>
-      <br />
-      <br />
-      {xResult}
-    </div>;
-  }
-});
-
-ReactDOM.render(
-  <Calculator />,
-  document.getElementById('app')
-);
-
-/* JS END */
-</script>
-
+    <script type="text/babel" src="./calculator.jsx"></script>
   </body>
 </html>
