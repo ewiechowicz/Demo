@@ -67,7 +67,7 @@ const Calculator = React.createClass({
           <div className="column aligned">
             <div className="ui action input">
               <input
-                type="text"
+                type="number"
                 placeholder="Add number..."
                 onChange={this.onFirstNumberChange}
                 value={this.state.number}
@@ -85,7 +85,7 @@ const Calculator = React.createClass({
               </select>
               &nbsp;
               <input
-                type="text"
+                type="number"
                 placeholder="Add number..."
                 onChange={this.onSecondNumberChange}
                 value={this.state.number2}
@@ -93,21 +93,21 @@ const Calculator = React.createClass({
               <button className="ui blue button">{result}</button>
             </div>
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <div className="row">
-            <div className="column">
-              <img
-                alt="calculator"
-                src="./calculator.png"
-                heigh="20%"
-                width="20%"
-                marginTop="200"
-              />
-            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="row">
+          <div className="column aligned">
+            <img
+              alt="calculator"
+              src="./calculator.png"
+              heigh="20%"
+              width="20%"
+              marginTop="200"
+            />
           </div>
         </div>
       </div>
