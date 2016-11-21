@@ -142,7 +142,7 @@ const ShoppingList = React.createClass({
             borderColor: 'grey',
             borderWidth: 1,
             borderStyle: 'inset',
-            marginTop: 200,
+            marginTop: 150,
             maxWidth: 450,
             borderRadius: 10,
           }}
