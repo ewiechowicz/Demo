@@ -36,16 +36,17 @@ const NumbersList = React.createClass({
     for (let i = 0; i < this.state.count; i += 1) {
       xListItems.push(
         <div className="item">
-          {this.state.numbers[i]}
+          <p>{this.state.numbers[i]}
           &nbsp;
-          <button
-            className="white ui icon mini button"
-            onClick={() => {
-              this.onButtonClick2(i);
-            }}
-          >
-            <i className="trash icon" />
-          </button>
+            <button
+              className="white ui icon small button"
+              onClick={() => {
+                this.onButtonClick2(i);
+              }}
+            >
+              <i className="trash icon" />
+            </button>
+          </p>
         </div>
       );
     }
@@ -56,22 +57,16 @@ const NumbersList = React.createClass({
     }
     return (
       <div className="ui equal width center aligned padded grid">
-        <div
-          className="row"
-          style={{
-            backgroundColor: '#FFFAF0',
-          }}
-        >
+        <div className="row">
           <div className="blue column">
-            <p><b>Numbers List:</b></p>
+            <p><b>Numbers List</b></p>
           </div>
-          <div className="blue column" />
         </div>
         <div className="row">
           <div className="white column">
             <div className="ui huge input">
               <input
-                type="text"
+                type="number"
                 placeholder="Add number..."
                 value={this.state.listItem}
                 onChange={this.onListChange}
@@ -82,7 +77,7 @@ const NumbersList = React.createClass({
           <div className="white column" />
           <div className="blue column">
             <button
-              className="ui inverted right labeled icon button"
+              className="big ui inverted right labeled icon button"
               onClick={this.onButtonClick}
             >
               <i className="right arrow icon" />
