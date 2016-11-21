@@ -60,7 +60,7 @@ const Calculator = React.createClass({
       <div
         className="ui one column centered grid"
         style={{
-          marginTop: 200,
+          marginTop: 100,
         }}
       >
         <div className="row">
