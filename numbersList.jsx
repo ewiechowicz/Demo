@@ -35,16 +35,18 @@ const NumbersList = React.createClass({
     const xListItems = [];
     for (let i = 0; i < this.state.count; i += 1) {
       xListItems.push(
-        <li key={i}>
+        <div className="item">
           {this.state.numbers[i]}
+          &nbsp;
           <button
+            className="white ui icon mini button"
             onClick={() => {
               this.onButtonClick2(i);
             }}
           >
-          Delete
+            <i className="trash icon" />
           </button>
-        </li>
+        </div>
       );
     }
 
@@ -53,29 +55,63 @@ const NumbersList = React.createClass({
       result += Number(this.state.numbers[j]);
     }
     return (
-      <div>
-        <b>Numbers List:</b>
-        <br />
-        <input
-          type="text"
-          value={this.state.listItem}
-          onChange={this.onListChange}
-          onKeyDown={this.add}
-        />
-        <button onClick={this.onButtonClick}>
-          Add
-        </button>
-        <ul>
-          {xListItems}
-        </ul>
-        <b>Sum:</b>
-        &nbsp;
-        <b>{result}</b>
+      <div className="ui equal width center aligned padded grid">
+        <div
+          className="row"
+          style={{
+            backgroundColor: '#FFFAF0',
+          }}
+        >
+          <div className="blue column">
+            <p><b>Numbers List:</b></p>
+          </div>
+          <div className="blue column" />
+        </div>
+        <div className="row">
+          <div className="white column">
+            <div className="ui huge input">
+              <input
+                type="text"
+                placeholder="Add number..."
+                value={this.state.listItem}
+                onChange={this.onListChange}
+                onKeyDown={this.add}
+              />
+            </div>
+          </div>
+          <div className="white column" />
+          <div className="blue column">
+            <button
+              className="ui inverted right labeled icon button"
+              onClick={this.onButtonClick}
+            >
+              <i className="right arrow icon" />
+            Add
+            </button>
+          </div>
+        </div>
+        <div
+          className="blue row"
+          style={{
+            backgroundColor: 'blue',
+          }}
+        >
+          <div className="ui relaxed horizontal list">
+            {xListItems}
+          </div>
+        </div>
+        <div className="row">
+          <div className="white column" />
+        </div>
+        <div className="row">
+          <div className="grey column">
+            <p><b>Sum:&nbsp;{result}</b></p>
+          </div>
+        </div>
       </div>
     );
   },
 });
-
 
 ReactDOM.render(
   <NumbersList />,
